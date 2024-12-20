@@ -1,0 +1,155 @@
+<!--우측 콘텐츠 헤더영역 -->
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>게시글정보관리</h2>
+    <ol class="breadcrumb">
+      <li><a href="/Home/Index">Home</a>></li>
+      <li><a>게시글정보관리</a>></li>
+      <li class="active">
+        <strong>기존 게시글 확인 및 수정/삭제</strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2"></div>
+</div>
+
+<!--우측 콘텐츠 영역 -->
+<div class="wrapper wrapper-content">
+  <form id="modifyForm" action="/article/modify" method="post">
+    <!-- html히든태그에 게시글고유번호를 저장하고 name속성을 지정해 post로 전달시 게시글 번호도 전달되게 처리함 -->
+    <input type="hidden" name="student_id" value="<%= student.StudentID %>" />
+
+    <div class="ibox-content m-b-sm border-bottom">
+      <!-- 학생이름영역 -->
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label class="control-label">이름</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="form-control"
+              value="<%= student.Name %>"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- 학번영역 -->
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label class="control-label">학번</label>
+            <input
+              type="text"
+              id="student_id_display"
+              name="student_id_display"
+              class="form-control"
+              value="<%= student.StudentID %>"
+              disabled
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- 성별영역 -->
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label class="control-label">성별</label>
+            <input
+              type="text"
+              id="gender"
+              name="gender"
+              class="form-control"
+              value="<%= student.Gender %>"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- 전공영역 -->
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label class="control-label">전공</label>
+            <input
+              type="text"
+              id="major"
+              name="major"
+              class="form-control"
+              value="<%= student.Major %>"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- 생년월일영역 -->
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label class="control-label">생년월일</label>
+            <input
+              type="text"
+              id="birth"
+              name="birth"
+              class="form-control"
+              value="<%= moment(student.Year).format('YYYY-MM-DD') %>"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- 핸드폰번호영역 -->
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label class="control-label">핸드폰번호</label>
+            <input
+              type="text"
+              id="phone"
+              name="phone"
+              class="form-control"
+              value="<%= student.Phonenumber %>"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- 동아리번호영역 -->
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label class="control-label">동아리번호</label>
+            <input
+              type="text"
+              id="club_id"
+              name="club_id"
+              class="form-control"
+              value="<%= student.Dno %>"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12">
+          <button type="submit" class="btn btn-primary">수정</button>
+          <button type="button" class="btn btn-danger" id="btnDelete">
+            삭제
+          </button>
+          <a href="/article/list" class="btn btn-info">목록</a>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+  $("#btnDelete").click(function () {
+    if (confirm("정말로 삭제하시겠습니까?")) {
+      location.href = "/article/delete?id=<%= student.StudentID %>";
+    }
+  });
+</script>

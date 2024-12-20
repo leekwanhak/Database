@@ -1,0 +1,97 @@
+
+
+            <!--우측 상단 헤더 영역 -->
+            <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-lg-10">
+                    <h2>학생정보 관리</h2>
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="/Home/Index">Home</a>>
+                        </li>
+                        <li>
+                            <a>학생정보관리</a>>
+                        </li>
+                        <li class="active">
+                            <strong>학생목록조회</strong>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-lg-2">
+
+                </div>
+            </div>
+
+            <!--우측 콘텐츠 영역 -->
+            <div class="wrapper wrapper-content">
+
+                <div class="ibox-content m-b-sm border-bottom">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="control-label" for="OrderNo">학번</label>
+                                <input type="text" id="title" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="control-label" for="OrderName">학생이름</label>
+                                <input type="text" id="ipaddress" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" id="btnSearch" class="btn btn-primary">조회</button>
+                        <a href="/article/create" class="btn btn-info">신규학생추가</a>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-content">
+                                <div class="table-responsive">
+
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th width="10%">이름</th>
+                                                <th width="20%">학번</th>
+                                                <th width="10%">성별</th>
+                                                <th width="10%">전공</th>
+                                                <th width="15%">생년월일</th>
+                                                <th width="20%">핸드폰번호</th>
+                                                <th width="10%">동아리번호</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="hoverTblBody" id="list">
+
+                                        <% for(var i =0;i<students.length;i++){ %>
+
+                                            <tr>
+                                                    <td><%=students[i].Name%></td>
+                                                    <td><a href="/article/modify/<%=students[i].StudentID%>"><%=students[i].StudentID%></a></td>
+                                                    
+                                                    <td><%=students[i].Gender%></td>
+                                                    <td><%=students[i].Major%></td>
+                                                    <td><%=students[i].Year%></td>
+                                                    <td><%=students[i].Phonenumber%></td>
+                                                    <td><%=students[i].Dno%></td>
+                                            </tr>
+
+                                        <% } %>
+                                           
+
+                           
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
